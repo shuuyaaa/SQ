@@ -32,8 +32,14 @@ function enableSubmit() {
 
 document.getElementById('submitForm').onsubmit = function(event) {
     event.preventDefault();  // Mencegah form submit default
-    showConfirmation();
-    playMusicAndBackgroundVideo();
+    const choice = document.querySelector('input[name="choice"]:checked').value;
+    
+    if (choice === 'Mau') {
+        showConfirmation();
+        playVideoWithSound();
+    } else {
+        triggerSpam();  // Panggil fungsi spam jika pilihannya "Tidak"
+    }
 };
 
 function showConfirmation() {
@@ -41,10 +47,26 @@ function showConfirmation() {
     confirmationMessage.style.display = 'block';  // Tampilkan pesan konfirmasi
 }
 
-function playMusicAndBackgroundVideo() {
+function playVideoWithSound() {
     const music = document.getElementById('music');
     const backgroundVideo = document.getElementById('backgroundVideo');
 
-    music.play();  // Mainkan musik
+    // Matikan musik dan mainkan video dengan suara
+    music.pause();  // Hentikan musik
     backgroundVideo.style.display = 'block';  // Tampilkan video sebagai background
+    backgroundVideo.muted = false;  // Aktifkan suara pada video
+    backgroundVideo.play();  // Mainkan video
+}
+
+function triggerSpam() {
+    const spamContainer = document.getElementById('spamContainer');
+    spamContainer.style.display = 'flex';  // Tampilkan container spam
+
+    // Membuat teks spam memenuhi layar
+    for (let i = 0; i < 100; i++) {  // Sesuaikan jumlah teks sesuai kebutuhan
+        let spamText = document.createElement('div');
+        spamText.innerText = "HARUS MAU!!!";
+        spamText.style.margin = '10px';
+        spamContainer.appendChild(spamText);
+    }
 }

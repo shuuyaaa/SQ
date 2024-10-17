@@ -11,6 +11,17 @@ body {
     overflow: hidden;
 }
 
+#backgroundVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0;
+}
+
+
 .calculator {
     background-color: white;
     padding: 20px;
@@ -20,6 +31,7 @@ body {
     z-index: 1;
     position: relative;
 }
+
 
 h1 {
     margin-bottom: 20px;
@@ -74,6 +86,25 @@ button:hover {
 #submitButton:hover:enabled {
     background-color: #45a049;
 }
+
+#spamContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 0, 0, 0.9); /* Latar merah transparan */
+    color: white;
+    font-size: 4vw; /* Ukuran huruf fleksibel untuk semua perangkat */
+    text-align: center;
+    z-index: 9999;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
 
 #confirmationMessage {
     margin-top: 20px;
